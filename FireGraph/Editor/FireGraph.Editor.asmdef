@@ -1,0 +1,18 @@
+{
+    "name": "FireGraph.Editor",
+    "rootNamespace": "FireGraph.Editor",
+    "references": [
+        "GUID:cc2f3db6179b0a34db40f4b7e63cb94f"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

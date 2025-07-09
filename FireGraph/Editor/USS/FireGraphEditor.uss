@@ -1,0 +1,10 @@
+FireNodeGraphView{
+    flex-grow: 1;
+}
+#GridBackground
+{
+    --thick-lines: 0;
+    --spacing: 25;
+    --grid-background-color: rgb(35, 35, 35);
+    --line-color: rgb(45, 45, 45);
+}

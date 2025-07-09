@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac1e31537bb648839fa531c55f793e43, type: 3}
+  m_Name: newGraph
+  m_EditorClassIdentifier: 
+  graphs:
+  - rid: 4995016622293647411
+  flowConnections: []
+  dataConnections: []
+  graphVariables:
+  - name: newString
+    type: string
+    value: 
+  references:
+    version: 2
+    RefIds:
+    - rid: 4995016622293647411
+      type: {class: DebugLogNode, ns: FireGraph.Runtime, asm: FireGraph}
+      data:
+        guid: e0e11923-10b7-4207-a86d-b6e5d4ae8b4a
+        position:
+          serializedVersion: 2
+          x: 394
+          y: 232
+          width: 0
+          height: 0
+        typeName: FireGraph.Runtime.DebugLogNode, FireGraph, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        outPort: 
+        value: No variable
+        message: 
+        logType: 0

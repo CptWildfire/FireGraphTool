@@ -1,0 +1,198 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac1e31537bb648839fa531c55f793e43, type: 3}
+  m_Name: FireGraphAsset
+  m_EditorClassIdentifier: 
+  graphs:
+  - rid: 4995016624729751552
+  - rid: 4995016624729751553
+  - rid: 4995016624729751612
+  - rid: 4995016624729751613
+  - rid: 4995016624729751614
+  - rid: 4995016624729751615
+  - rid: 4995016648245903462
+  flowConnections:
+  - inputConnection:
+      nodeId: 7a22e16d-ed6e-4cba-b3b3-62514a164cdb
+      portIndex: 0
+    outputConnection:
+      nodeId: 0b19609f-2622-4452-9caf-ffb34714cba5
+      portIndex: 0
+  - inputConnection:
+      nodeId: a5714a14-ac9f-4d06-914a-3949def246cb
+      portIndex: 0
+    outputConnection:
+      nodeId: 48daced8-338c-463d-8d74-47acdec76087
+      portIndex: 1
+  - inputConnection:
+      nodeId: 41303af6-0151-47e0-92cb-888ca9bdfa7a
+      portIndex: 0
+    outputConnection:
+      nodeId: 48daced8-338c-463d-8d74-47acdec76087
+      portIndex: 2
+  - inputConnection:
+      nodeId: 35720a1d-e48e-468d-a196-af329da6a68d
+      portIndex: 0
+    outputConnection:
+      nodeId: 7a22e16d-ed6e-4cba-b3b3-62514a164cdb
+      portIndex: 1
+  - inputConnection:
+      nodeId: 48daced8-338c-463d-8d74-47acdec76087
+      portIndex: 0
+    outputConnection:
+      nodeId: f879ebd2-92fd-4435-b3d8-fe93dee0e282
+      portIndex: 1
+  - inputConnection:
+      nodeId: f879ebd2-92fd-4435-b3d8-fe93dee0e282
+      portIndex: 0
+    outputConnection:
+      nodeId: 35720a1d-e48e-468d-a196-af329da6a68d
+      portIndex: 1
+  dataConnections:
+  - inputConnection:
+      nodeId: 35720a1d-e48e-468d-a196-af329da6a68d
+      portIndex: 0
+    outputConnection:
+      nodeId: 7a22e16d-ed6e-4cba-b3b3-62514a164cdb
+      portIndex: 0
+  - inputConnection:
+      nodeId: f879ebd2-92fd-4435-b3d8-fe93dee0e282
+      portIndex: 0
+    outputConnection:
+      nodeId: 7a22e16d-ed6e-4cba-b3b3-62514a164cdb
+      portIndex: 0
+  - inputConnection:
+      nodeId: 48daced8-338c-463d-8d74-47acdec76087
+      portIndex: 0
+    outputConnection:
+      nodeId: f879ebd2-92fd-4435-b3d8-fe93dee0e282
+      portIndex: 2
+  graphVariables:
+  - name: newBool
+    type: bool
+    value: True
+  - name: newInt
+    type: int
+    value: 12
+  - name: newVector2
+    type: Vector2
+    value: (16.30, 555.36)
+  - name: newVector3
+    type: Vector3
+    value: (0.00, 0.00, 0.00)
+  references:
+    version: 2
+    RefIds:
+    - rid: 4995016624729751552
+      type: {class: StartNode, ns: FireGraph.Runtime, asm: FireGraph}
+      data:
+        guid: 0b19609f-2622-4452-9caf-ffb34714cba5
+        position:
+          serializedVersion: 2
+          x: 268
+          y: 498
+          width: 75
+          height: 77
+        typeName: FireGraph.Runtime.StartNode, FireGraph, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        outPort: 
+    - rid: 4995016624729751553
+      type: {class: GetVariableNode, ns: FireGraph.Runtime, asm: FireGraph}
+      data:
+        guid: 7a22e16d-ed6e-4cba-b3b3-62514a164cdb
+        position:
+          serializedVersion: 2
+          x: 379
+          y: 498
+          width: 204
+          height: 122
+        typeName: FireGraph.Runtime.GetVariableNode, FireGraph, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        outPort: 
+        varName: newVector2
+        value: 
+    - rid: 4995016624729751612
+      type: {class: BranchNode, ns: FireGraph.Runtime, asm: FireGraph}
+      data:
+        guid: 48daced8-338c-463d-8d74-47acdec76087
+        position:
+          serializedVersion: 2
+          x: 1154
+          y: 620
+          width: 182
+          height: 126
+        typeName: FireGraph.Runtime.BranchNode, FireGraph, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        truePort: 
+        falsePort: 
+        condition: 0
+    - rid: 4995016624729751613
+      type: {class: DebugLogNode, ns: FireGraph.Runtime, asm: FireGraph}
+      data:
+        guid: a5714a14-ac9f-4d06-914a-3949def246cb
+        position:
+          serializedVersion: 2
+          x: 1405
+          y: 620
+          width: 207
+          height: 122
+        typeName: FireGraph.Runtime.DebugLogNode, FireGraph, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        outPort: 
+        message: Good
+        logType: 0
+    - rid: 4995016624729751614
+      type: {class: DebugLogNode, ns: FireGraph.Runtime, asm: FireGraph}
+      data:
+        guid: 41303af6-0151-47e0-92cb-888ca9bdfa7a
+        position:
+          serializedVersion: 2
+          x: 1405
+          y: 782
+          width: 229
+          height: 162
+        typeName: FireGraph.Runtime.DebugLogNode, FireGraph, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        outPort: 
+        message: Not Good
+        logType: 0
+    - rid: 4995016624729751615
+      type: {class: DebugLogNode, ns: FireGraph.Runtime, asm: FireGraph}
+      data:
+        guid: 35720a1d-e48e-468d-a196-af329da6a68d
+        position:
+          serializedVersion: 2
+          x: 639
+          y: 498
+          width: 178
+          height: 102
+        typeName: FireGraph.Runtime.DebugLogNode, FireGraph, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        outPort: 
+        message: 
+        logType: 0
+    - rid: 4995016648245903462
+      type: {class: StringToV3Node, ns: FireGraph.Runtime, asm: FireGraph}
+      data:
+        guid: f879ebd2-92fd-4435-b3d8-fe93dee0e282
+        position:
+          serializedVersion: 2
+          x: 883
+          y: 575
+          width: 178
+          height: 126
+        typeName: FireGraph.Runtime.StringToV3Node, FireGraph, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        outPort: 
+        stringValue: 
+        vector3Value: {x: 0, y: 0, z: 0}
+        succeed: 0
