@@ -1,8 +1,8 @@
 {
   "name": "com.nathangarbe.firegraphtool",
   "displayName": "FireGraph Tool",
-  "version": "0.0.4",
-  "unity": "6000.0.25f1",
+  "version": "0.0.5",
+  "unity": "6000.0",
   "description": "FireGraph is a lightweight visual scripting tool for Unity with a node-based editor and variable blackboard, designed for custom logic prototyping.",
   "author": {
     "name": "Nathan Garbe",
