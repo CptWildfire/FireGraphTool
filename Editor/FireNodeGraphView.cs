@@ -87,7 +87,7 @@ namespace FireGraph.Editor
         private void AddBackground()
         {
             //!! be careful, maybe this ref can be lost depending how the user will install the package. !!
-            StyleSheet styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/FireGraph/Editor/USS/FireGraphEditor.uss");
+            StyleSheet styleSheet = LoadStyleSheet("FireGraphEditor.uss");
             styleSheets.Add(styleSheet);
 
             GridBackground background = new GridBackground { name = "GridBackground" };
@@ -559,6 +559,25 @@ namespace FireGraph.Editor
                 return false;
 
             return true;
+        }
+        
+        private static StyleSheet LoadStyleSheet(string relativePath)
+        {
+            string[] possiblePaths = new[]
+            {
+                "Assets/FireGraph/Editor/USS/" + relativePath,
+                "Packages/com.nathangarbe.firegraphtool/Editor/USS/" + relativePath
+            };
+
+            foreach (var path in possiblePaths)
+            {
+                var sheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(path);
+                if (sheet != null)
+                    return sheet;
+            }
+
+            Debug.LogWarning($"StyleSheet {relativePath} not found.");
+            return null;
         }
     }
 }

@@ -112,7 +112,7 @@ namespace FireGraph.Editor
         }
 
         private void CreatePorts(NodeInfoAttribute attribute)
-        {
+        { 
             if (attribute.HasFlowInput)
                 CreateInputFlowPort(attribute);
             
