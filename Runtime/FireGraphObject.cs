@@ -7,16 +7,21 @@ namespace FireGraph.Runtime
     {
         [SerializeField]
         private FireGraphAsset graphAsset;
+        public bool executeOnEnable = false;
         
         private void OnEnable()
         {
-            Execute();   
+            if (executeOnEnable) 
+                Execute();   
         }
 
         public void Execute()
         {
             //Execute a copy of the graph asset to avoid modify some value during process.
-            ExecuteGraph(Instantiate(graphAsset));
+            if (graphAsset) 
+                ExecuteGraph(Instantiate(graphAsset));
+            else
+                Debug.LogWarning("No graph asset selected.");
         }
 
         private void ExecuteGraph(FireGraphAsset graph)
