@@ -16,14 +16,22 @@ namespace FireGraph.Runtime
         [SerializeField] private List<FireGraphVariable> graphVariables = new();
 
         private Dictionary<string, GraphNode> nodes = new();
+        private FireGraphObject executable;
         
         public List<GraphNode> Graphs => graphs;
         public List<FireGraphConnection> FlowConnections => flowConnections;
         public List<FireGraphConnection> DataConnections => dataConnections;
         public List<FireGraphVariable> GraphVariables => graphVariables;
-
-        public void Init()
+        public FireGraphObject Executable
         {
+            get => executable;
+            set => executable = value;
+        }
+
+        public void Init(FireGraphObject fireGraphObject)
+        {
+            executable = fireGraphObject;
+            
             foreach (GraphNode node in graphs)
             {
                 nodes.TryAdd(node.Id, node);
@@ -80,7 +88,7 @@ namespace FireGraph.Runtime
         public void RemoveBrokenConnections()
         {
             if (nodes.Count == 0)
-                Init();
+                Init(null);
             
             RemoveBrokenConnection(ref flowConnections);
             RemoveBrokenConnection(ref dataConnections);

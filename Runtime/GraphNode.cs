@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -149,6 +150,44 @@ namespace FireGraph.Runtime
             value = executedGraph.GraphVariables.FirstOrDefault(v => v.name == varName)?.value;
             
             dataOutputPorts.Add(0, value);
+            return base.Execute(executedGraph, outPutIndex);
+        }
+    }
+    
+    [NodeInfo("ComponentCall", "#40556b", "Process/Component Call")]
+    public class ComponentCallNode : GraphNode
+    {
+        [FlowOutPort("Out", 1)]
+        public string outPort;
+        
+        public override string Execute(FireGraphAsset executedGraph, int outPutIndex = 1)
+        {
+            string callMethodPath = executedGraph.Executable.GetComponentCallValue(Id);
+            
+            if (string.IsNullOrEmpty(callMethodPath) || !callMethodPath.Contains("/"))
+                return base.Execute(executedGraph, outPutIndex);
+            
+            Component[] components = executedGraph.Executable.GetComponents<Component>();
+            Component myComponent = null;
+
+            string[] path = callMethodPath.Split("/");
+            
+            string componentName = path[0].Replace("/", "");
+            string methodName = path[1].Replace("/", "");
+
+            foreach (Component component in components)
+            {
+                string name = component.GetType().Name;
+                if (name == componentName)
+                    myComponent = component;
+            }
+
+            if (myComponent != null)
+            {
+                var method = myComponent.GetType().GetMethod(methodName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                method?.Invoke(myComponent, null);
+            }
+            
             return base.Execute(executedGraph, outPutIndex);
         }
     }

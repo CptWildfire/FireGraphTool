@@ -10,29 +10,18 @@ namespace FireGraph.Editor
     {
         public override void OnInspectorGUI()
         {
-            if (GUILayout.Button("Open"))
-            {
-                FireGraphEditorWindow.Open((FireGraphAsset)target);
-            }
+            FireGraphAsset asset = (FireGraphAsset)target;
+            
+            GUI.enabled = false;
+            EditorGUILayout.ObjectField(asset.Executable, typeof(FireGraphObject), true);
+            GUI.enabled = true;
 
             if (GUILayout.Button("Check Data Integrity"))
             {
-                FireGraphAsset asset = (FireGraphAsset)target;
-
                 asset.RemoveBrokenConnections();
             }
         }
 
-        [OnOpenAsset]
-        public static bool OnOpen(int instanceId, int index)
-        {
-            Object asset = EditorUtility.InstanceIDToObject(instanceId);
-            
-            if (asset.GetType() != typeof(FireGraphAsset)) 
-                return false;
-            
-            FireGraphEditorWindow.Open((FireGraphAsset)asset);
-            return true;
-        }
+        
     }
 }

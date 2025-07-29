@@ -25,8 +25,7 @@ namespace FireGraph.Editor
                 //if on opened window already contain our asset, we can focus on it instead of creating a new one
                 if (window.FireGraphAsset == fireGraphAsset)
                 {
-                    window.Focus();
-                    return;
+                    window.Close();
                 }
             }
             
@@ -41,7 +40,7 @@ namespace FireGraph.Editor
             }
             
             FireGraphEditorWindow newWindow = CreateWindow<FireGraphEditorWindow>(typeof(FireGraphEditorWindow),typeof(SceneView));
-            newWindow.titleContent = new GUIContent($"{fireGraphAsset.name}", EditorGUIUtility.ObjectContent(null, typeof(FireGraphAsset)).image);
+            newWindow.titleContent = new GUIContent($"{fireGraphAsset.name}-{fireGraphAsset.Executable.name}", EditorGUIUtility.ObjectContent(null, typeof(FireGraphAsset)).image);
             newWindow.Load(fireGraphAsset);
         }
 

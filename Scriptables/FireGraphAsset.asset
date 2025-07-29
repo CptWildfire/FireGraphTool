@@ -14,18 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   graphs:
   - rid: 4995016624729751552
-  - rid: 4995016624729751553
   - rid: 4995016624729751612
   - rid: 4995016624729751613
   - rid: 4995016624729751614
   - rid: 4995016624729751615
+  - rid: 4995017122509226072
   flowConnections:
-  - inputConnection:
-      nodeId: 7a22e16d-ed6e-4cba-b3b3-62514a164cdb
-      portIndex: 0
-    outputConnection:
-      nodeId: 0b19609f-2622-4452-9caf-ffb34714cba5
-      portIndex: 0
   - inputConnection:
       nodeId: a5714a14-ac9f-4d06-914a-3949def246cb
       portIndex: 0
@@ -42,15 +36,21 @@ MonoBehaviour:
       nodeId: 35720a1d-e48e-468d-a196-af329da6a68d
       portIndex: 0
     outputConnection:
-      nodeId: 7a22e16d-ed6e-4cba-b3b3-62514a164cdb
-      portIndex: 1
-  dataConnections:
+      nodeId: 0b19609f-2622-4452-9caf-ffb34714cba5
+      portIndex: 0
   - inputConnection:
-      nodeId: 35720a1d-e48e-468d-a196-af329da6a68d
+      nodeId: e5df8ea5-694e-4aa0-8ded-86b0845d6e86
       portIndex: 0
     outputConnection:
-      nodeId: 7a22e16d-ed6e-4cba-b3b3-62514a164cdb
+      nodeId: 35720a1d-e48e-468d-a196-af329da6a68d
+      portIndex: 1
+  - inputConnection:
+      nodeId: 48daced8-338c-463d-8d74-47acdec76087
       portIndex: 0
+    outputConnection:
+      nodeId: e5df8ea5-694e-4aa0-8ded-86b0845d6e86
+      portIndex: 1
+  dataConnections: []
   graphVariables:
   - name: newBool
     type: bool
@@ -73,51 +73,36 @@ MonoBehaviour:
         guid: 0b19609f-2622-4452-9caf-ffb34714cba5
         position:
           serializedVersion: 2
-          x: 268
+          x: 266
           y: 498
           width: 75
           height: 77
         typeName: FireGraph.Runtime.StartNode, FireGraph, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         outPort: 
-    - rid: 4995016624729751553
-      type: {class: GetVariableNode, ns: FireGraph.Runtime, asm: FireGraph}
-      data:
-        guid: 7a22e16d-ed6e-4cba-b3b3-62514a164cdb
-        position:
-          serializedVersion: 2
-          x: 379
-          y: 498
-          width: 204
-          height: 122
-        typeName: FireGraph.Runtime.GetVariableNode, FireGraph, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-        outPort: 
-        varName: newVector2
-        value: 
     - rid: 4995016624729751612
       type: {class: BranchNode, ns: FireGraph.Runtime, asm: FireGraph}
       data:
         guid: 48daced8-338c-463d-8d74-47acdec76087
         position:
           serializedVersion: 2
-          x: 883
-          y: 710
+          x: 974
+          y: 498
           width: 182
           height: 126
         typeName: FireGraph.Runtime.BranchNode, FireGraph, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         truePort: 
         falsePort: 
-        condition: 0
+        condition: 1
     - rid: 4995016624729751613
       type: {class: DebugLogNode, ns: FireGraph.Runtime, asm: FireGraph}
       data:
         guid: a5714a14-ac9f-4d06-914a-3949def246cb
         position:
           serializedVersion: 2
-          x: 1134
-          y: 710
+          x: 1225
+          y: 498
           width: 207
           height: 122
         typeName: FireGraph.Runtime.DebugLogNode, FireGraph, Version=0.0.0.0, Culture=neutral,
@@ -131,8 +116,8 @@ MonoBehaviour:
         guid: 41303af6-0151-47e0-92cb-888ca9bdfa7a
         position:
           serializedVersion: 2
-          x: 1134
-          y: 872
+          x: 1225
+          y: 660
           width: 229
           height: 122
         typeName: FireGraph.Runtime.DebugLogNode, FireGraph, Version=0.0.0.0, Culture=neutral,
@@ -146,12 +131,26 @@ MonoBehaviour:
         guid: 35720a1d-e48e-468d-a196-af329da6a68d
         position:
           serializedVersion: 2
-          x: 633
+          x: 377
           y: 498
-          width: 191
+          width: 263
           height: 122
         typeName: FireGraph.Runtime.DebugLogNode, FireGraph, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         outPort: 
-        message: 
+        message: Test component
         logType: 0
+    - rid: 4995017122509226072
+      type: {class: ComponentCallNode, ns: FireGraph.Runtime, asm: FireGraph}
+      data:
+        guid: e5df8ea5-694e-4aa0-8ded-86b0845d6e86
+        position:
+          serializedVersion: 2
+          x: 679
+          y: 498
+          width: 242
+          height: 118
+        typeName: FireGraph.Runtime.ComponentCallNode, FireGraph, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        outPort: 
+        callMethodPath: MyComponent/Test

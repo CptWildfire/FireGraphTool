@@ -222,16 +222,10 @@ namespace FireGraph.Editor
         
         private void ShowNodeProperties(Type typeInfos)
         {
-            foreach (FieldInfo fieldInfos in typeInfos.GetFields())
-            {
-                if (fieldInfos.GetCustomAttribute<NodePropertyAttribute>() is not null)
-                {
-                    if (fieldInfos.GetCustomAttribute<GraphVariableAttribute>() is {} graphVariable)
-                        DrawGraphVariableProperty(fieldInfos);
-                    else 
-                        DrawProperty(fieldInfos.Name);
-                }
-            }
+            if (typeInfos == typeof(ComponentCallNode))
+                ShowComponentCallNodeProperties(typeInfos);
+            else
+                ShowGraphNodeProperties(typeInfos);
             
             RefreshExpandedState();
         }
@@ -316,6 +310,75 @@ namespace FireGraph.Editor
             }
             
             RefreshExpandedState();
+        }
+
+        private void ShowGraphNodeProperties(Type typeInfos)
+        {
+            foreach (FieldInfo fieldInfos in typeInfos.GetFields())
+            {
+                if (fieldInfos.GetCustomAttribute<NodePropertyAttribute>() is not null)
+                {
+                    if (fieldInfos.GetCustomAttribute<GraphVariableAttribute>() is {} graphVariable)
+                        DrawGraphVariableProperty(fieldInfos);
+                    else 
+                        DrawProperty(fieldInfos.Name);
+                }
+            }
+        }
+        private void ShowComponentCallNodeProperties(Type typeInfos)
+        {
+            GameObject gameObject = assetParent.Executable.gameObject;
+            FireGraphObject graphObject = assetParent.Executable;
+            
+            var objectField = new ObjectField("FireGraphObject")
+            {
+                value = gameObject,
+                objectType = typeof(FireGraphObject),
+                allowSceneObjects = true
+            };
+            objectField.SetEnabled(false);
+            extensionContainer.Add(objectField);
+            
+            if (!gameObject)
+                return;
+            
+            Component[] components = gameObject.GetComponents<Component>();
+            List<string> methodOptions = new() { "<None>" };
+
+            foreach (var component in components)
+            {
+                var type = component.GetType();
+                var methods = type.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+
+                foreach (var method in methods)
+                {
+                    if (method.GetCustomAttribute<GraphCallableAttribute>() != null)
+                    {
+                        methodOptions.Add($"{type.Name}/{method.Name}");
+                    }
+                }
+            }
+
+            if (graphNode is not ComponentCallNode callNode)
+                return;
+            
+            string defaultSelection = "<None>";
+            
+            if (!graphObject.ContainComponentCallKey(graphNode.Id))
+                graphObject.SetComponentCallValue(graphNode.Id, defaultSelection);
+            
+            if (string.IsNullOrEmpty(graphObject.GetComponentCallValue(graphNode.Id)) || !methodOptions.Contains(graphObject.GetComponentCallValue(graphNode.Id)))
+                graphObject.SetComponentCallValue(graphNode.Id, defaultSelection);
+            
+            var popup = new PopupField<string>("Method:", methodOptions, graphObject.GetComponentCallValue(graphNode.Id));
+
+            popup.RegisterValueChangedCallback(evt =>
+            {
+                graphObject.SetComponentCallValue(graphNode.Id, evt.newValue);
+                EditorUtility.SetDirty(assetParent);
+            });
+
+            extensionContainer.Add(popup);
         }
     }
 }
